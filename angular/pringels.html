@@ -1,0 +1,110 @@
+<html ng-app="PringlesApp">
+	<head>
+		<title>Pringles' Inventory</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+		<script src="scripts/pringlesapp.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</head>
+	<body ng-controller="PringlesCtrl">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="index.html">Inventory</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="users.html">Users</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="pringels.html" tabindex="-1" aria-disabled="true">Pringles</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<main class="container-fluid">
+			<div class="row">
+				<form class="col-md-2">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<div class="mb-3">
+						<label for="inputName" class="form-label">Nombre de la lata</label>
+						<input ng-model="nombre_lata" type="text" class="form-control" id="nombre_lata" required>
+					</div>
+					<div class="mb-3">
+						<label for="inputColor" class="form-label">Color</label>
+						<input ng-model="color_principal" type="color" class="form-control" id="color_principal" ng-style="divStyle" required>
+					</div>
+					<div class="mb-3">
+						<label for="inputNacionalidad" class="form-label">Nacionalidad</label>
+						<input ng-model="nacionalidad" type="text" class="form-control" id="nacionalidad" required>
+					</div>
+					<div class="mb-3">
+						<label for="inputColor" class="form-label">Quien la entrega?</label>
+						<input ng-model="who_user" type="text" class="form-control" id="who_user" required>
+					</div>
+					<button ng-click="addCan()" type="submit" class="btn btn-primary" id="btn-color-picker">Add can</button>
+				</form>
+			</div>
+
+		<div class="row">
+			<div class="col-md-5">
+			<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col">Nombre de la lata</th>
+			      <th scope="col">Color</th>
+			      <th scope="col">Nacionalidad</th>
+			      <th scope="col">Quien la trajo?</th>
+			      <th scope="col">Fecha entrega</th>
+			      <th scope="col">Edit</th>
+			      <th scope="col">Remove</th>
+			    </tr>
+			  </thead>
+			  <tbody ng-repeat="cans in can">
+			    <tr>
+			      <td>{{cans.nombre_lata}}</td>
+			      <td><input type="color" value="{{cans.color_principal}}" disabled></td>
+			      <td>{{cans.nacionalidad}}</td>
+			      <td>{{cans.who_user}}</td>
+			      <td>{{cans.UTC}}</td>
+			      <td><a href="#" class="btn btn-danger" ng-click="deleteCan(cans)">Delete</a></td>
+			    </tr>
+			  </tbody>
+			</table>
+			<a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Edit</a>
+			</div>
+		</div>	
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Edit or Remove</h5>
+			      </div>
+			      <div class="modal-body" ng-repeat="cans in can">
+		      			<label for="inputNacionalidad" class="form-label">Nombre</label>
+						<input ng-model="cans.nombre_lata" class="form-control">
+						<label for="inputNacionalidad" class="form-label">Color (not #fff)</label>
+						<input ng-model="cans.color_principal" class="form-control" type="color">
+						<label for="inputNacionalidad" class="form-label">Nacionalidad</label>
+						<input ng-model="cans.nacionalidad" class="form-control">
+						<label for="inputNacionalidad" class="form-label">Quien la entrego?</label>
+						<input ng-model="cans.who_user" class="form-control">
+				      	<div class="pt-2">			
+				        	<a href="#" ng-click="editCan(cans)" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+				    	</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</main>
+	</body>
+</html>

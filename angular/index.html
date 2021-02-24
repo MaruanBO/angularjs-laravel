@@ -1,0 +1,120 @@
+<html ng-app>
+  <head>
+    <title>Pringles' Inventory</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+	<a class="navbar-brand" href="index.html">Inventory</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	    <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="users.html">Users</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link disabled" href="pringles.html" tabindex="-1" aria-disabled="true">Pringles</a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+    </nav>
+    <main class="m-3">
+    <h1 id="web-developer-access-test---jtsec">Web developer access test - jtsec</h1>
+    <h2 id="introduction">Introduction</h2>
+    <p>As you know, at jtsec we love Pringles! In fact, we have a whole shelf full of cans from all over the world. Every time someone goes on a trip to a foreign country, they try to bring a can that we don’t have in order to add it to the collection. The problem is that it is getting harder and harder to know which cans we already have in the office and we have to keep calling each other to see if we already have it or if it is a new one.</p>
+    <p>So, to test your skills, we propose you to develop a web application to make an inventory of the Pringles we already have on the shelf. The application must meet the following requirements.</p>
+    <h2 id="environment">Environment:</h2>
+    <ul>
+      <li>Must be developed in Linux</li>
+      <li>Docker and docker-compose must be installed.</li>
+      <li>Your browser of choice.</li>
+      <li>Your text editor of choice.</li>
+    </ul>
+    <h2 id="technologies">Technologies:</h2>
+    <ul>
+      <li>Relational Database (MySQL): Stores the data the application needs to work.</li>
+      <li>Backend (Laravel 5): API to interact with the database.</li>
+      <li>Frontend (AngularJS): View to interact with the API.</li>
+      <li>Style (Bootstrap): The view must use Bootstrap.</li>
+      <li>Execution in Docker: The application will be ready to run in containers, so that it runs in the same conditions for everyone.</li>
+    </ul>
+    <h2 id="user-stories">User stories:</h2>
+    <ul>
+      <li>Anyone will be able to add a can of Pringles to the database.</li>
+      <li>Anyone can add the following information about a can: name, main color, nationality, when in was added, who brought it.</li>
+      <li>Anyone can remove a can.</li>
+      <li>Anyone will be able to visualize the cans with all the information that we have about them. In addition, the color of the can will also have to be indicated in some way visually. This means that if the can is red, the text should appear in the same color.</li>
+      <li>(Optional) Anyone can edit a can that has been added previously.</li>
+    </ul>
+    <h2 id="starting-point">Starting point</h2>
+    <p>To facilitate the development, a template is provided from which you can start. It is included:</p>
+    <ul>
+      <li>Definition of the execution environment with docker-compose. It is not necessary any kind of modification.</li>
+      <li>As an example, we have developed the backend, frontend and table of the database to store and interact with “users”. The only purpose of a user is to use it to indicate who has brought a can.</li>
+    </ul>
+    <h3 id="angular">Angular</h3>
+    <ul>
+      <li>The root directory is “angular”</li>
+      <li>The users’ view is in “angular/users.html”</li>
+      <li>The whole AngularJS definition is in “angular/scripts/pringlesapp.js”</li>
+    </ul>
+    <h3 id="laravel">Laravel</h3>
+    <ul>
+      <li>The database migrations are defined in “database/migrations”</li>
+      <li>The User model is defined in “app/User.php”</li>
+      <li>The API routes and their functionality are defined in “app/Http/routes.php”</li>
+    </ul>
+    <h2 id="tasks">Tasks</h2>
+    <p>The tasks to be performed are:</p>
+    <ol type="1">
+      <li>Through a migration in Laravel, create a table to be able to store the information related to the cans (name, main color, nationality, date added and who brought it). This last field must be related to the “users” table already created.</li>
+      <li>Define the routes in Laravel to add and remove cans with the API.</li>
+      <li>Define the factory in Angular to be able to consume the developed API.</li>
+      <li>Define the controller with the necessary logic and add the view in Angular to be able to use the API from the web interface.</li>
+      <li>(Optional) Define the path in Laravel to edit cans with the API.</li>
+      <li>(Optional) Add this endpoint to the Angular factory.</li>
+      <li>(Optional) Add to the controller the necessary logic and modify the Angular view to make use of the new functionality from the web interface.</li>
+      <li>Write documentation in English explaining what has been done, decisions made, design of the database… with screenshots of the UI (PDF or Markdown).</li>
+    </ol>
+    <h2 id="extra">Extra:</h2>
+    <ul>
+      <li>We ask that good practices be followed in the development of the test.</li>
+      <li>Optionally, use git for version control (locally). The project is already delivered with a “First commit”.</li>
+      <li>You are free to develop the tasks as you consider best as long as the requirements are met. When in doubt, make a decision and document why you have chosen that path.</li>
+    </ul>
+    <h2 id="resources">Resources</h2>
+    <p>This is a basic test to check the developer’s skills in handling new technologies. Therefore, it is understood that this may be the first time that you work with Angular or Laravel. That is why the following resources are recommended if you consider you are a novice in these technologies:</p>
+    <ul>
+      <li>Google and Stackoverflow.</li>
+      <li>The Laravel 5 documentation (https://laravel.com/docs/5.1).</li>
+      <li>Codigofacilito AngularJS course (https://www.youtube.com/watch?v=U4ejmeEals0&amp;list=PLpOqH6AE0tNhdnOl1mOBthj4C7OHdwQB2).</li>
+    </ul>
+    <h1 id="execution">Execution</h1>
+    <p>Finally, to run the project, just execute the following command:</p>
+    <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> up -d</span></code></pre></div>
+      <p>Services:</p>
+      <pre><code>Frontend (APP): http://localhost:8081
+Backend (API): http://localhost:8080
+Database: 127.0.0.1:3306</code></pre>
+      <p>In addition, if this is the first time you run it (or have created a new migration), you should apply the changes as follows:</p>
+      <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> exec app php artisan migrate</span></code></pre></div>
+	<p>It is also possible to connect directly to the database to check that the tables have been created successfully. For example, to do this with the mysql tool:</p>
+	<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mysql</span> -h 127.0.0.1 -u root -p laravel</span></code></pre></div>
+	  <p>The root password is: secret</p>
+	  <p>Note that although the connection is to localhost, the IP must be specified to avoid the Linux socket connection. We need it to connect to the running container that is exposing a port, not the host.</p>
+	  <h1 id="finalization">Finalization</h1>
+	  <p>Once you finish the tasks or the time is over, you will need to send us your project which should contains the following:</p>
+	  <ul>
+	    <li>Documentation of the project (task#8).</li>
+	    <li>The project with the rest of the tasks.</li>
+	  </ul>
+    </main>
+  </body>
+</html>
