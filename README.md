@@ -1,11 +1,6 @@
-# Documentation
-
-## Introduction
-In this documentation I will explain why I do it like this and why. I used the template and made some improvements to it. I have had some fails with the environment like network, mysql (500 error), migration data (php_network_getaddresses) i tell you that because probably make another guys like me stay trying to resolve that. 
-
 ## Environment:
 - Ubuntu 20.04
-- Docker and docker-compose.
+- Docker and docker-composer
 - Firefox.
 - Sublime text.
 
